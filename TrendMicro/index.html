@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trendify Store Hub</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="./main.js" defer></script>
+    <link rel="icon" type="image/png" href="./images/logo2.png" />
+
+
+
+    <style>
+      @keyframes beat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+      .animate-beat {
+        animation: beat 1.5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+  
+<section class="relative z-[999]">
+  <div class="w-full bg-white border-b-4 border-red-600 px-4 py-2 relative shadow-sm">
+    <div class="flex justify-end items-center flex-wrap gap-5 text-sm text-gray-700 font-medium">
+
+      <!-- Alerts  -->
+      <div class="relative group">
+        <button
+          onclick="toggleAlertsDropdown()"
+          class="flex items-center gap-1 hover:text-red-600 transition duration-300"
+        >
+          <svg class="w-4 h-4 text-gray-400 group-hover:text-red-600 transition" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 00-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+          <span>Alerts</span>
+        </button>
+
+        <!-- Dropdown -->
+        <div
+          id="alertsDropdown"
+          class="hidden absolute top-8 left-0 bg-white text-gray-800 text-sm rounded-md shadow-lg border border-gray-200 px-6 py-4 w-80 opacity-0 scale-95 transition-all duration-300 ease-in-out z-50"
+        >
+          <div class="absolute -top-2 left-5 w-3 h-3 bg-white rotate-45 border-l border-t border-gray-200 shadow-sm"></div>
+          <p class="font-medium">🔔 No new notifications at this time.</p>
+        </div>
+      </div>
+
+      <!-- Buy -->
+      <a href="./products.html" class="flex items-center gap-1 hover:text-red-600 transition duration-300">
+        <svg class="w-4 h-4 text-gray-400 hover:text-red-600 transition" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.6 8H19m-12 0a2 2 0 104 0m6 0a2 2 0 104 0" />
+        </svg>
+        <span>Buy</span>
+      </a>
+
+      <!-- Privacy Policy -->
+      <a href="/privacypolicy.html" class="flex items-center gap-1 hover:text-red-600 transition duration-300">
+        <svg class="w-4 h-4 text-gray-400 hover:text-red-600 transition" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 4.354a9 9 0 00-7 8.735V15l-2 2v1h18v-1l-2-2v-1.91a9 9 0 00-7-8.736z" />
+        </svg>
+        <span>Privacy Policy</span>
+      </a>
+
+      <!-- Log In -->
+      <a href="./footer/loginpage.html" class="flex items-center gap-1 hover:text-red-600 transition duration-300">
+        <svg class="w-4 h-4 text-gray-400 hover:text-red-600 transition" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M5.121 17.804A10.003 10.003 0 0112 2a10.003 10.003 0 016.879 15.804M15 11H9m0 0l3-3m-3 3l3 3" />
+        </svg>
+        <span>Log In</span>
+      </a>
+
+      <!-- Contact Dropdown -->
+      <div class="relative z-[999]">
+        <button
+          id="contactBtn"
+          class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 flex items-center gap-1 focus:outline-none transition"
+          onclick="toggleContactDropdown()"
+        >
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 8a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.828-1.828A1 1 0 0014.172 3H9.828a1 1 0 00-.707.293L7.293 4.879A1 1 0 016.586 5H5a2 2 0 00-2 2v1m0 4v4a2 2 0 002 2h1.586a1 1 0 01.707.293l1.828 1.828a1 1 0 00.707.293h4.344a1 1 0 00.707-.293l1.828-1.828a1 1 0 01.707-.293H19a2 2 0 002-2v-4a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.828-1.828a1 1 0 00-.707-.293H9.828a1 1 0 00-.707.293L7.293 9.707A1 1 0 016.586 10H5a2 2 0 00-2 2z" />
+          </svg>
+          <span>Contact</span>
+        </button>
+
+        <!-- Contact Dropdown -->
+        <div
+          id="contactDropdown"
+          class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50"
+        >
+          <a href="tel:+18777592050"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">📞 +1 (877) 759-2050</a>
+          <a href="mailto:support@example.com"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">📧 support@example.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Sticky Navbar -->
+    <section
+      class="bg-gradient-to-r from-red-700 via-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-md transition-all duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap"
+      >
+        <!-- Logo -->
+        <div class="flex items-center">
+          <a href="#">
+ <img
+  src="./images/logo.png"
+  alt="Logo"
+  class="h-16 w-auto transition-transform duration-300 hover:scale-105"
+/>
+
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul
+          class="flex flex-wrap gap-4 text-sm md:text-base font-semibold transition-all duration-300"
+        >
+          <li>
+            <a
+              href="./index.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./products.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="./renew.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Renew</a
+            >
+          </li>
+          <li>
+            <a
+              href="./aboutus.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="tandc.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Terms & Conditions</a
+            >
+          </li>
+          <li>
+            <a
+              href="./support.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Support</a
+            >
+          </li>
+          <li>
+            <a
+              href="./products.html"
+              class="cursor-pointer hover:underline hover:text-yellow-200 transition duration-300"
+              >Buy Now</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Hero Section - Trend Micro Gradient Themed -->
+<section
+  id="home"
+  class="bg-gradient-to-br from-[#b30000] via-[#e60000] to-[#ff4d4d] text-white pt-24 pb-20 px-6 min-h-screen"
+>
+  <div
+    class="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12"
+  >
+    <!-- Left Content -->
+    <div class="w-full md:w-1/2">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Total Protection<br />
+        For Your Digital Life
+      </h1>
+
+      <p class="text-lg text-white/90 mb-8 max-w-xl">
+        Trend Micro's award-winning antivirus shields your identity, secures
+        your devices, and blocks 250M+ daily threats. Stay safe, stay ahead —
+        always.
+      </p>
+
+      <!-- Stats -->
+      <div
+        class="flex flex-wrap gap-8 mb-10 text-yellow-200 font-semibold text-lg"
+      >
+        <div>
+          <span class="text-2xl">250M+</span>
+          <p class="text-sm font-normal text-white mt-1">
+            Threats Blocked Daily
+          </p>
+        </div>
+        <div>
+          <span class="text-2xl">500M+</span>
+          <p class="text-sm font-normal text-white mt-1">Users Protected</p>
+        </div>
+        <div>
+          <span class="text-2xl">99.9%</span>
+          <p class="text-sm font-normal text-white mt-1">
+            Detection Accuracy
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="flex gap-4">
+        <a href="./Products/suitepro.html">
+
+            <button
+            class="bg-white text-red-700 hover:bg-yellow-400 hover:text-black px-6 py-3 rounded-md font-bold shadow transition-all duration-300"
+            >
+            Buy Now - 1 PC, 1 Year
+        </button>
+    </a>
+      </div>
+    </div>
+
+    <!-- Right-side Image -->
+    <div class="w-full md:w-1/2 flex justify-center items-center">
+      <img
+        src="./images/shield.png"
+        alt="Shield Protection"
+        class="w-48 md:w-72 opacity-90 animate-pulse drop-shadow-xl"
+      />
+    </div>
+  </div>
+</section>
+
+
+    <!--Features -1-->
+    <section class="bg-white text-gray-800 py-28 px-6 min-h-screen">
+      <div
+        class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center animate-fade-in-up"
+      >
+        <!-- Left Content -->
+        <div>
+          <h2 class="text-4xl md:text-5xl font-light leading-snug">
+            <span class="text-red-600 font-bold">Protection</span> against<br />
+            ever-evolving threats
+          </h2>
+          <p class="mt-8 text-gray-700 text-xl leading-relaxed">
+            Powered by AI, Trend Micro stops
+            <span class="font-bold text-black">ransomware</span> so you can
+            enjoy your digital life safely. It also protects against malware,
+            online banking and shopping threats and much more. Top rated by
+            industry experts, Trend Micro Security delivers 100% protection
+            against web threats.*
+          </p>
+        </div>
+
+        <!-- Right Feature Icons Grid -->
+        <div class="grid grid-cols-2 gap-10 text-center">
+          <!-- Feature 1 -->
+          <div class="transition-all duration-700 hover:scale-105">
+            <img
+              src="./images/ailearning.png"
+              alt="AI Learning"
+              class="mx-auto h-20 w-20 mb-4"
+            />
+            <p class="text-base font-medium">Advanced AI learning</p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="transition-all duration-700 hover:scale-105">
+            <img
+              src="./images/ransomware.png"
+              alt="Ransomware Protection"
+              class="mx-auto h-20 w-20 mb-4"
+            />
+            <p class="text-base font-medium">
+              Leading <span class="font-bold">ransomware</span><br />protection
+            </p>
+          </div>
+          <!-- Feature 3 -->
+          <div class="transition-all duration-700 hover:scale-105">
+            <img
+              src="./images/identitytheft.png"
+              alt="Identity Theft"
+              class="mx-auto h-20 w-20 mb-4"
+            />
+            <p class="text-base font-medium">
+              Safeguards against identity theft
+            </p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="transition-all duration-700 hover:scale-105">
+            <img
+              src="./images/threatsblocked.png"
+              alt="Threats Blocked"
+              class="mx-auto h-20 w-20 mb-4"
+            />
+            <p class="text-base font-medium">
+              Over 250 million threats blocked daily<sup>iii</sup>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Product Section-->
+
+    <section class="w-full bg-white py-16 px-4 md:px-10 lg:px-20">
+      <h2
+        class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+      >
+        Our Products
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        <!-- Product 1 -->
+        <a
+          href="./Products/anitvirus+security.html"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/antivirus+security.png"
+            alt="Trend Micro Antivirus+ Security 2024"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Trend Micro Antivirus+ Security 2024
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$19</p>
+            <p class="text-sm text-gray-500 mt-1">1 PC · 1 Year</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+
+        <!-- Product 2 -->
+        <a
+          href="/products/internet-security"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/internetsecuriy.png"
+            alt="Trend Micro Internet Security 2024"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Trend Micro Internet Security 2024
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$29</p>
+            <p class="text-sm text-gray-500 mt-1">3 Devices · 1 Year</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+
+        <!-- Product 3 -->
+        <a
+          href="/products/maximum-security"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/maximumsecurity.png"
+            alt="Trend Micro Maximum Security 2024"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Trend Micro Maximum Security 2024
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$39</p>
+            <p class="text-sm text-gray-500 mt-1">5 Devices · 1 Year</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+
+        <!-- Product 4 -->
+        <a
+          href="/products/premium-security"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/premiumsecurity.png"
+            alt="Premium Security Suite 2024"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Premium Security Suite 2024
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$49</p>
+            <p class="text-sm text-gray-500 mt-1">10 Devices · 1 Year</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+
+        <!-- Product 5 -->
+        <a
+          href="/products/security-suite-pro-plus"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/securitysuiteproplus.webp"
+            alt="Security Suite Pro Plus"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Security Suite Pro Plus
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$269</p>
+            <p class="text-sm text-gray-500 mt-1">5 Devices · 2 Years</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+
+        <!-- Product 6 -->
+        <a
+          href="/products/security-suite-pro"
+          class="group block bg-white shadow-lg rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl duration-300"
+        >
+          <img
+            src="./images/productsicon/securitysuitepro.webp"
+            alt="Security Suite Pro"
+            class="w-full h-64 object-contain p-4"
+          />
+          <div class="p-4 text-center">
+            <h3 class="text-lg font-semibold text-gray-800">
+              Security Suite Pro
+            </h3>
+            <p class="text-red-600 font-bold mt-2">$49</p>
+            <p class="text-sm text-gray-500 mt-1">3 Devices · 1 Year</p>
+            <span
+              class="inline-block mt-4 px-4 py-2 bg-red-600 text-white rounded transition group-hover:bg-red-700"
+              >Buy Now</span
+            >
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!--NEed of antivirus-->
+
+    <section class="bg-white py-20 px-4">
+      <div class="max-w-7xl mx-auto text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+          Why do you need
+          <span class="text-red-600">Trend Micro Antivirus</span>?
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center"
+      >
+        <!-- Award-Winning Protection -->
+        <div
+          class="space-y-6 transform transition duration-300 hover:scale-105"
+        >
+          <img
+            src="./images/awardwinning.png"
+            alt="Award-Winning"
+            class="mx-auto w-24 h-24 object-contain"
+          />
+          <h3 class="text-xl font-semibold text-gray-800">
+            Award-Winning Protection
+          </h3>
+          <p class="text-base text-gray-600 leading-relaxed">
+            Trend Micro offers top-tier solutions and award-winning security,
+            recognized by AV-Test since 2003.
+          </p>
+        </div>
+
+        <!-- Trusted by Millions -->
+        <div
+          class="space-y-6 transform transition duration-300 hover:scale-105"
+        >
+          <img
+            src="./images/trustedbymillions.png"
+            alt="Trusted by Millions"
+            class="mx-auto w-24 h-24 object-contain"
+          />
+          <h3 class="text-xl font-semibold text-gray-800">
+            Trusted by Millions
+          </h3>
+          <p class="text-base text-gray-600 leading-relaxed">
+            Committed to 100% customer satisfaction — our experts are available
+            24x7 to assist you.
+          </p>
+        </div>
+
+        <!-- 35 Years of Innovation -->
+        <div
+          class="space-y-6 transform transition duration-300 hover:scale-105"
+        >
+          <img
+            src="./images/35yearsofinovation.png"
+            alt="35 Years of Innovation"
+            class="mx-auto w-24 h-24 object-contain"
+          />
+          <h3 class="text-xl font-semibold text-gray-800">
+            35 Years of Innovation
+          </h3>
+          <p class="text-base text-gray-600 leading-relaxed">
+            With decades of expertise, we ensure cutting-edge antivirus and
+            internet security for you.
+          </p>
+        </div>
+
+        <!-- 100% Money Back Guarantee -->
+        <div
+          class="space-y-6 transform transition duration-300 hover:scale-105"
+        >
+          <img
+            src="./images/moneyback.png"
+            alt="Money Back Guarantee"
+            class="mx-auto w-24 h-24 object-contain"
+          />
+          <h3 class="text-xl font-semibold text-gray-800">
+            100% Money Back Guarantee
+          </h3>
+          <p class="text-base text-gray-600 leading-relaxed">
+            Shop with confidence — enjoy a 30-day money-back satisfaction
+            guarantee.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--Reviews Section-->
+    <!-- Customer Reviews Section -->
+    <section class="bg-white py-20 px-4">
+      <div class="max-w-7xl mx-auto text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800">
+          Trend Micro Security Products Customer Reviews
+        </h2>
+      </div>
+
+      <div
+        id="reviewGrid"
+        class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <!-- Review Card 1 -->
+        <div
+          class="review-card opacity-0 transform translate-y-10 transition-all duration-700 bg-red-50 p-6 pt-10 pl-10 rounded-xl shadow-md hover:shadow-lg hover:shadow-red-200 hover:scale-[1.02] relative"
+        >
+          <div
+            class="absolute top-0 left-0 bg-red-700 text-white p-2 rounded-br-lg"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7.17 6A5.001 5.001 0 002 11v3h5v5h4v-8a5 5 0 00-3.83-4.9zM17.17 6A5.001 5.001 0 0012 11v3h5v5h4v-8a5 5 0 00-3.83-4.9z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-red-700 mb-3">
+            It is a good system and appears to cover all aspects
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-5">
+            I have been with Trend Micro for quite a number of years and my
+            computer and mobile devices have been well-protected and no
+            invasions by hackers [nor] other infiltrators have [since] occurred.
+            Being an aged person without an IT background, I have called
+            technical support service a number of times and received all the
+            time and assistance needed. Your technicians are always helpful and
+            understanding.
+          </p>
+          <div class="flex items-center gap-3 mt-4">
+            <img
+              src="./images/profile.png"
+              alt="User"
+              class="w-9 h-9 rounded-full bg-gray-200"
+            />
+            <p class="text-sm font-semibold text-gray-800">
+              Bill Goodie -
+              <span class="text-gray-600 font-normal">3 months ago</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div
+          class="review-card opacity-0 transform translate-y-10 transition-all duration-700 bg-red-50 p-6 pt-10 pl-10 rounded-xl shadow-md hover:shadow-lg hover:shadow-red-200 hover:scale-[1.02] relative"
+        >
+          <div
+            class="absolute top-0 left-0 bg-red-700 text-white p-2 rounded-br-lg"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7.17 6A5.001 5.001 0 002 11v3h5v5h4v-8a5 5 0 00-3.83-4.9zM17.17 6A5.001 5.001 0 0012 11v3h5v5h4v-8a5 5 0 00-3.83-4.9z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-red-700 mb-3">
+            Good quality product
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-5">
+            I have been a Trend Micro customer since 2013. In that time, I have
+            never been attacked by any malicious software [nor] infected with
+            harm-causing software. I have been warned a number of times that
+            particular websites were potentially dangerous and should be
+            avoided. I have never had any cause to question what the Trend Micro
+            software was doing, as it went about its business of protecting me.
+            The four other systems that are protected by my licensed version of
+            the software have never had their computers compromised.
+          </p>
+          <div class="flex items-center gap-3 mt-4">
+            <img
+              src="./images/profile.png"
+              alt="User"
+              class="w-9 h-9 rounded-full bg-gray-200"
+            />
+            <p class="text-sm font-semibold text-gray-800">
+              woodsie13 -
+              <span class="text-gray-600 font-normal">5 months ago</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div
+          class="review-card opacity-0 transform translate-y-10 transition-all duration-700 bg-red-50 p-6 pt-10 pl-10 rounded-xl shadow-md hover:shadow-lg hover:shadow-red-200 hover:scale-[1.02] relative"
+        >
+          <div
+            class="absolute top-0 left-0 bg-red-700 text-white p-2 rounded-br-lg"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M7.17 6A5.001 5.001 0 002 11v3h5v5h4v-8a5 5 0 00-3.83-4.9zM17.17 6A5.001 5.001 0 0012 11v3h5v5h4v-8a5 5 0 00-3.83-4.9z"
+              />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-red-700 mb-3">
+            Fool-proof protection
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-5">
+            I have been with Trend Micro for years now and have never had a
+            problem. From the first installation which was easy, to annual
+            renewals—the processes have been simple. I have three devices
+            protected and it gives me peace of mind. I would highly recommend
+            this product.
+          </p>
+          <div class="flex items-center gap-3 mt-4">
+            <img
+              src="./images/profile.png"
+              alt="User"
+              class="w-9 h-9 rounded-full bg-gray-200"
+            />
+            <p class="text-sm font-semibold text-gray-800">
+              wall - <span class="text-gray-600 font-normal">5 months ago</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Buy From Official Store Section -->
+    <section id="official-store" class="bg-white py-20 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-10 items-center text-center md:text-left"
+        >
+          <!-- Section Heading -->
+          <div class="md:col-span-1">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">
+              Why Buy from the <br />
+              <span class="text-red-600">Official Trend Micro Store</span>?
+            </h2>
+          </div>
+
+          <!-- Feature 1 -->
+          <div
+            class="store-feature opacity-0 transform translate-y-10 transition-all duration-700 ease-in-out flex flex-col items-center md:items-start text-center md:text-left space-y-3 bg-white p-4 rounded-lg hover:shadow-md hover:shadow-red-100"
+          >
+            <img
+              src="./images/offer.png"
+              alt="Latest Products & Offers"
+              class="w-12 h-12 transition-transform duration-300 hover:scale-110"
+            />
+            <h3 class="text-lg font-semibold text-gray-800">
+              Latest Products & Offers
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Get the latest deals across our entire range of security products
+              for all your internet-connected devices.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="store-feature opacity-0 transform translate-y-10 transition-all duration-700 ease-in-out flex flex-col items-center md:items-start text-center md:text-left space-y-3 bg-white p-4 rounded-lg hover:shadow-md hover:shadow-red-100"
+          >
+            <img
+              src="./images/simpleeasy.png"
+              alt="Simple & Easy"
+              class="w-12 h-12 transition-transform duration-300 hover:scale-110"
+            />
+            <h3 class="text-lg font-semibold text-gray-800">Simple & Easy</h3>
+            <p class="text-gray-600 text-sm">
+              Buying online is only a few clicks away. If you require help, our
+              online support is available 24x7 via email or chat.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="store-feature opacity-0 transform translate-y-10 transition-all duration-700 ease-in-out flex flex-col items-center md:items-start text-center md:text-left space-y-3 bg-white p-4 rounded-lg hover:shadow-md hover:shadow-red-100"
+          >
+            <img
+              src="./images/peaceofmind.png"
+              alt="Total Peace of Mind"
+              class="w-12 h-12 transition-transform duration-300 hover:scale-110"
+            />
+            <h3 class="text-lg font-semibold text-gray-800">
+              Total Peace of Mind
+            </h3>
+            <p class="text-gray-600 text-sm">
+              Stay continuously protected with the latest version and automatic
+              renewal on checkout – removing the hassle of renewing manually
+              every year.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who is Trend Micro & Support Section -->
+    <section class="bg-white py-16 px-4">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+        <!-- Who is Trend Micro -->
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+            Who is Trend Micro?
+          </h2>
+          <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+            Trend Micro is an industry leader in antivirus protection and
+            internet security, with more than 30 years of security software
+            experience in keeping millions of users safe. Trend Micro Security
+            secures your connected world providing protection against malware,
+            ransomware, spyware, and cyber threats that could compromise your
+            online experience. It also helps protect you from identity theft,
+            viruses, online scams, and other emerging threats.
+          </p>
+        </div>
+
+        <!-- Need Support -->
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+            Need Support?
+          </h2>
+          <p class="text-gray-700 leading-relaxed text-sm sm:text-base mb-6">
+            Need help installing your software? You can view our online
+            tutorials to help get you up and running; or if you'd prefer to
+            contact us, you can chat, email, or call one of our technical
+            support engineers.
+          </p>
+          <a
+            href="./support.html"
+            class="inline-block bg-green-700 text-white text-xs sm:text-sm font-semibold px-5 py-2 rounded shadow-md hover:bg-green-800 transition"
+          >
+            GET SUPPORT
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Call Button -->
+    <section>
+      <a
+        href="tel:+18777592050"
+        class="fixed bottom-5 right-4 z-50 bg-gradient-to-r from-red-600 to-rose-600 text-white px-5 py-3 rounded-full shadow-lg flex items-center gap-3 text-sm sm:text-base font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-in-out animate-pulse"
+      >
+        <!-- Phone Icon -->
+        <svg
+          class="w-5 h-5 sm:w-6 sm:h-6"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6.62 10.79a15.093 15.093 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.3 22 2 13.7 2 3a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1.003 1.003 0 01-.24 1.01l-2.2 2.2z"
+          />
+        </svg>
+
+        <div class="flex flex-col items-start leading-tight">
+          <span class="font-bold">+1 (877) 759-2050</span>
+          <span class="text-xs sm:text-sm font-normal">Click Here To Call</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- Trend Micro Styled Footer -->
+    <footer class="bg-gray-900 text-white pt-12 px-6">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Contact Us</h3>
+          <p class="text-sm">
+            10101 N. De Anza Blvd<br />Cupertino, CA 95014-9985
+          </p>
+          <p class="text-sm mt-2">
+            Email:
+            <a
+              href="mailto:contact@trendifystorehub.com"
+              class="hover:underline text-red-400"
+              >contact@trendifystorehub.com</a
+            >
+          </p>
+          <p class="text-sm mt-1">
+            Website:
+            <a
+              href="https://www.thinknum.xyz"
+              class="hover:underline text-red-400"
+              >www.trendifystorehub.com</a
+            >
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-red-400 transition">Home</a></li>
+            <li>
+              <a href="./products.html" class="hover:text-red-400 transition"
+                >Trend Micro Antivirus</a
+              >
+            </li>
+
+            <li>
+              <a href="./aboutus.html" class="hover:text-red-400 transition"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="./support.html" class="hover:text-red-400 transition"
+                >Support</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Policies -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Policies</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="./privacypolicy.html"
+                class="hover:text-red-400 transition"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                href="./returnandrefund.html"
+                class="hover:text-red-400 transition"
+                >Refund & Return Policy</a
+              >
+            </li>
+            <li>
+              <a href="./tandc.html" class="hover:text-red-400 transition"
+                >Terms & Conditions</a
+              >
+            </li>
+            <li>
+              <a
+                href="./footer/disclaimer.html"
+                class="hover:text-red-400 transition"
+                >Disclaimer</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Featured Products -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">
+            Trend Micro Products
+          </h3>
+          <ul class="space-y-4 text-sm">
+            <li>
+                <a href="./Products/anitvirus+security.html">
+
+                    <p class="font-medium">
+                        Trend Micro Antivirus+ Security | 1 PC – 1 Year
+                    </p>
+                    <p class="text-red-400">$44.00</p>
+                </li>
+            </a>
+            <li>
+                <a href="./Products//internetsecurity.html">
+
+                    <p class="font-medium">
+                        Trend Micro Internet Security | 3 Devices – 1 Year
+                    </p>
+                    <p class="text-red-400">$49.00</p>
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider & CTA -->
+      <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto"
+        >
+          <p class="text-sm text-gray-400">
+            &copy; 2025 Trendify Store Hub. All rights reserved.
+          </p>
+
+          <!-- Call-to-Action -->
+          <a
+            href="tel:+18777592050"
+            class="bg-red-600 text-white font-semibold px-4 py-2 rounded-md shadow-md hover:bg-red-700 transition"
+          >
+            +1 (877) 759-2050 — Click to Call
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

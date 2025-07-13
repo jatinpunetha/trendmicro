@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trend Micro Internet Security 2025</title>
+    <link rel="stylesheet" href="../main.css" />
+    <script src="../main.js" defer></script>
+    <link rel="icon" type="image/png" href="./images/logo2.png" />
+    <style>
+      :root {
+        --trend-micro-red: #e63946;
+        --trend-micro-blue: #007bff;
+      }
+
+      .bg-add-to-cart {
+        background-color: var(--trend-micro-red);
+      }
+
+      .hover\:bg-add-to-cart-hover:hover {
+        background-color: #c12a34;
+      }
+
+      .focus\:ring-add-to-cart:focus {
+        --tw-ring-color: #e63946;
+      }
+
+      .cart-alert {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: #22c55e;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+        pointer-events: none;
+        z-index: 50;
+      }
+
+      .cart-alert.show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans text-gray-800">
+    <!-- Top Bar Section -->
+    <section class="relative z-[999]">
+      <div
+        class="w-full bg-white border-b-4 border-red-600 px-4 py-2 relative shadow-sm"
+      >
+        <div
+          class="flex justify-end items-center flex-wrap gap-5 text-sm text-gray-700 font-medium"
+        >
+          <div class="relative group">
+            <button
+              onclick="toggleAlertsDropdown()"
+              class="flex items-center gap-1 hover:text-red-600 transition duration-300"
+            >
+              <span
+                class="w-4 h-4 bg-gray-400 rounded-full group-hover:bg-red-600 transition duration-300"
+              ></span>
+              <span>Alerts</span>
+            </button>
+            <div
+              id="alertsDropdown"
+              class="hidden absolute top-8 left-0 bg-white text-gray-800 text-sm rounded-md shadow-lg border border-gray-200 px-6 py-4 w-80 opacity-0 scale-95 transition-all duration-300 ease-in-out z-50"
+            >
+              <div
+                class="absolute -top-2 left-5 w-3 h-3 bg-white rotate-45 border-l border-t border-gray-200 shadow-sm"
+              ></div>
+              <p class="font-medium">🔔 No new notifications at this time.</p>
+            </div>
+          </div>
+          <a
+            href="/buy.html"
+            class="flex items-center gap-1 hover:text-red-600 transition duration-300"
+          >
+            <span
+              class="w-4 h-4 bg-gray-400 rounded-full hover:bg-red-600 transition duration-300"
+            ></span>
+            <span>Buy</span>
+          </a>
+          <a
+            href="/privacy-policy.html"
+            class="flex items-center gap-1 hover:text-red-600 transition duration-300"
+          >
+            <span
+              class="w-4 h-4 bg-gray-400 rounded-full hover:bg-red-600 transition duration-300"
+            ></span>
+            <span>Privacy Policy</span>
+          </a>
+          <a
+            href="./footer/loginpage.html"
+            class="flex items-center gap-1 hover:text-red-600 transition duration-300"
+          >
+            <span
+              class="w-4 h-4 bg-gray-400 rounded-full hover:bg-red-600 transition duration-300"
+            ></span>
+            <span>Log In</span>
+          </a>
+          <div class="relative z-[999]">
+            <button
+              id="contactBtn"
+              class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 flex items-center gap-1 focus:outline-none transition"
+              onclick="toggleContactDropdown()"
+            >
+              <span>Contact</span>
+              <svg
+                class="w-3 h-3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              id="contactDropdown"
+              class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50"
+            >
+              <a
+                href="tel:+18777592050"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >📞 +1 (877) 759-2050</a
+              >
+              <a
+                href="mailto:support@example.com"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >📧 support@example.com</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Navbar -->
+    <section
+      class="bg-gradient-to-r from-red-700 via-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-md transition-all duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between flex-wrap"
+      >
+        <div class="flex items-center">
+          <a href="#">
+            <img
+  src="../images/logo.png"
+  alt="Logo"
+  class="h-16 w-auto transition-transform duration-300 hover:scale-105"
+/>
+
+          </a>
+        </div>
+        <ul
+          class="flex flex-wrap gap-4 text-sm md:text-base font-semibold transition-all duration-300"
+        >
+          <li>
+            <a
+              href="./index.html"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="./products.html"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Products</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Renew</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Terms & Conditions</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Support</a
+            >
+          </li>
+          <li>
+            <a
+              href="./products.html"
+              class="hover:underline hover:text-yellow-200 transition duration-300"
+              >Buy Now</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="min-h-screen flex items-center justify-center py-8 px-4">
+      <div class="container mx-auto max-w-6xl">
+        <div
+          class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row transition-transform duration-500 ease-in-out"
+        >
+          <div class="p-6 md:p-10 md:w-1/2 flex justify-center items-center">
+            <div class="w-full">
+              <img
+                src="../images/productsicon/internetsecuriy.png"
+                alt="Trend Micro Internet Security"
+                class="w-full h-auto object-contain rounded-lg shadow-xl transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+          <div class="p-6 md:p-10 md:w-1/2 flex flex-col">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-2 leading-tight">
+              Trend Micro Internet Security 2025 - 3 Devices, 1 Year
+            </h2>
+            <p class="text-sm text-green-600 font-medium mb-4">
+              Status: In stock
+            </p>
+            <div class="text-gray-700 space-y-4 text-sm">
+              <div>
+                <h3 class="text-lg font-bold">Product Key</h3>
+                <p>
+                  Instant Download – Instructions will be emailed to you after
+                  purchase.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold">Product Details</h3>
+                <p><strong>Brand:</strong> Trend Micro</p>
+                <p><strong>Media Type:</strong> Download</p>
+                <p><strong>Platform:</strong> Windows, Mac OS, Android, iOS</p>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold">Benefits for You</h3>
+                <ul class="list-disc list-inside space-y-2">
+                  <li>
+                    <strong>Advanced Online Protection:</strong> Defend against
+                    malware, ransomware, and phishing attacks.
+                  </li>
+                  <li>
+                    <strong>Privacy Shield:</strong> Block unauthorized access
+                    to personal data and secure online transactions.
+                  </li>
+                  <li>
+                    <strong>Web Threat Defense:</strong> Prevent access to
+                    dangerous websites and malicious links.
+                  </li>
+                  <li>
+                    <strong>Multi-Device Support:</strong> Protect up to 3
+                    devices across platforms.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-6 lg:w-80">
+              <div
+                class="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm"
+              >
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl font-bold">$29.00</span>
+                </div>
+                <div class="mb-4">
+                  <label for="quantity" class="block text-sm font-semibold mb-1"
+                    >Quantity</label
+                  >
+                  <div
+                    class="flex items-center border border-gray-300 rounded-md overflow-hidden"
+                  >
+                    <button
+                      id="minusBtn"
+                      class="px-3 py-1 text-gray-600 hover:bg-gray-200"
+                    >
+                      -
+                    </button>
+                    <input
+                      id="quantity"
+                      type="text"
+                      value="1"
+                      class="w-16 text-center focus:outline-none"
+                      readonly
+                    />
+                    <button
+                      id="plusBtn"
+                      class="px-3 py-1 text-gray-600 hover:bg-gray-200"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button
+                  id="addToCartBtn"
+                  class="w-full py-3 rounded-md text-white font-bold bg-add-to-cart hover:bg-add-to-cart-hover focus:outline-none focus:ring-2 focus:ring-add-to-cart focus:ring-offset-2 transition duration-300"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="cartAlert" class="cart-alert">✅ Item added to cart</div>
+
+    <!-- Description Section -->
+    <section
+      class="min-h-[300px] flex items-center justify-center py-8 px-4 mt-16"
+    >
+      <div class="container mx-auto max-w-6xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 md:p-10">
+          <div class="border-b border-gray-300 pb-4 mb-6">
+            <h2 class="text-lg font-semibold text-gray-800">Description</h2>
+          </div>
+          <div class="text-sm text-gray-700 leading-relaxed space-y-4">
+            <p>
+              Trend Micro Internet Security 2024 provides robust protection from
+              online threats including ransomware, viruses, and phishing. It
+              delivers security for all your personal devices.
+            </p>
+            <p>
+              With Pay Guard and Web Threat Protection, it ensures safe browsing
+              and online banking. Parental Controls help protect your children
+              while they're online.
+            </p>
+            <p>
+              This subscription covers <strong>3 Devices for 1 Year</strong> and
+              is compatible with Windows, Mac, Android, and iOS platforms.
+            </p>
+            <p>
+              The installation is seamless with an instant email delivery of
+              your activation key. Enjoy protection that's effective,
+              lightweight, and trusted worldwide.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trend Micro Styled Footer -->
+    <footer class="bg-gray-900 text-white pt-12 px-6">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-4 sm:grid-cols-2 gap-10">
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Contact Us</h3>
+          <p class="text-sm">
+            10101 N. De Anza Blvd<br />Cupertino, CA 95014-9985
+          </p>
+          <p class="text-sm mt-2">
+            Email:
+            <a
+              href="mailto:contact@trendifystorehub.com"
+              class="hover:underline text-red-400"
+              >contact@trendifystorehub.com</a
+            >
+          </p>
+          <p class="text-sm mt-1">
+            Website:
+            <a
+              href="https://www.thinknum.xyz"
+              class="hover:underline text-red-400"
+              >www.trendifystorehub.com</a
+            >
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/" class="hover:text-red-400 transition">Home</a></li>
+            <li>
+              <a href="./products.html" class="hover:text-red-400 transition"
+                >Trend Micro Antivirus</a
+              >
+            </li>
+
+            <li>
+              <a href="./aboutus.html" class="hover:text-red-400 transition"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="./support.html" class="hover:text-red-400 transition"
+                >Support</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Policies -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">Policies</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a
+                href="./privacypolicy.html"
+                class="hover:text-red-400 transition"
+                >Privacy Policy</a
+              >
+            </li>
+            <li>
+              <a
+                href="./returnandrefund.html"
+                class="hover:text-red-400 transition"
+                >Refund & Return Policy</a
+              >
+            </li>
+            <li>
+              <a href="./tandc.html" class="hover:text-red-400 transition"
+                >Terms & Conditions</a
+              >
+            </li>
+            <li>
+              <a
+                href="./footer/disclaimer.html"
+                class="hover:text-red-400 transition"
+                >Disclaimer</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Featured Products -->
+        <div>
+          <h3 class="text-xl font-semibold mb-4 text-red-500">
+            Trend Micro Products
+          </h3>
+          <ul class="space-y-4 text-sm">
+            <li>
+                <a href="./Products/anitvirus+security.html">
+
+                    <p class="font-medium">
+                        Trend Micro Antivirus+ Security | 1 PC – 1 Year
+                    </p>
+                    <p class="text-red-400">$44.00</p>
+                </li>
+            </a>
+            <li>
+                <a href="./Products//internetsecurity.html">
+
+                    <p class="font-medium">
+                        Trend Micro Internet Security | 3 Devices – 1 Year
+                    </p>
+                    <p class="text-red-400">$49.00</p>
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Divider & CTA -->
+      <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto"
+        >
+          <p class="text-sm text-gray-400">
+            &copy; 2025 Trendify Store Hub. All rights reserved.
+          </p>
+
+          <!-- Call-to-Action -->
+          <a
+            href="tel:+18777592050"
+            class="bg-red-600 text-white font-semibold px-4 py-2 rounded-md shadow-md hover:bg-red-700 transition"
+          >
+            +1 (877) 759-2050 — Click to Call
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cartAlert = document.getElementById("cartAlert");
+        const addToCartBtn = document.getElementById("addToCartBtn");
+        const quantityInput = document.getElementById("quantity");
+        const minusBtn = document.getElementById("minusBtn");
+        const plusBtn = document.getElementById("plusBtn");
+
+        minusBtn.addEventListener("click", () => {
+          let q = parseInt(quantityInput.value);
+          if (q > 1) quantityInput.value = q - 1;
+        });
+
+        plusBtn.addEventListener("click", () => {
+          let q = parseInt(quantityInput.value);
+          quantityInput.value = q + 1;
+        });
+
+        addToCartBtn.addEventListener("click", () => {
+          const quantity = parseInt(quantityInput.value);
+          cartAlert.textContent = `✅ ${quantity} item${
+            quantity > 1 ? "s" : ""
+          } successfully added to your cart`;
+          cartAlert.classList.add("show");
+          setTimeout(() => {
+            cartAlert.classList.remove("show");
+          }, 4000);
+        });
+      });
+    </script>
+  </body>
+</html>
